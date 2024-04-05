@@ -18,9 +18,9 @@ builder.Services.AddSwaggerGen();
 // attach it to connectionstring
 builder.Services.AddDbContext<CustomerDbContext>(option =>
 {
-    option.UseSqlServer(Environment.GetEnvironmentVariable("CustomerDB")); 
+    //option.UseSqlServer(Environment.GetEnvironmentVariable("CustomerDB")); 
     // comment dev
-    //option.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDB"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDB"));
 });
 builder.Services.AddScoped<ICustomerServiceAsync, CustomerServiceAsync>(); // in controller
 builder.Services.AddScoped<ICustomerRepoAsync, CustomerRepoAsync>(); // in service

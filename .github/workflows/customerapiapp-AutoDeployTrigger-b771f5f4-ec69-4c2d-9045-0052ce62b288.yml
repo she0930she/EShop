@@ -1,0 +1,43 @@
+name: Trigger auto deployment for customerapiapp
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - 'CustomerService/CustomerAPI/**'
+    - '.github/workflows/customerapiapp-AutoDeployTrigger-b771f5f4-ec69-4c2d-9045-0052ce62b288.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CUSTOMERAPIAPP_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}CustomerService/CustomerAPI 
+          registryUrl: customereshop.azurecr.io
+          registryUsername: ${{ secrets.CUSTOMERAPIAPP_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.CUSTOMERAPIAPP_REGISTRY_PASSWORD }}
+          containerAppName: customerapiapp
+          resourceGroup: customerapiResource
+          imageToBuild: customereshop.azurecr.io/customerapiapp:${{ github.sha }}
+          
+            
+
+     
+

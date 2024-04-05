@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - 'CustomerService/CustomerAPI/**'
+    - 'CustomerService/**'
     - '.github/workflows/customerapiapp-AutoDeployTrigger-b771f5f4-ec69-4c2d-9045-0052ce62b288.yml'
 
   # Allow manual trigger 
@@ -29,13 +29,14 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
-          appSourcePath: ${{ github.workspace }}CustomerService/CustomerAPI 
+          appSourcePath: ${{ github.workspace }} 
           registryUrl: customereshop.azurecr.io
           registryUsername: ${{ secrets.CUSTOMERAPIAPP_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.CUSTOMERAPIAPP_REGISTRY_PASSWORD }}
           containerAppName: customerapiapp
           resourceGroup: customerapiResource
           imageToBuild: customereshop.azurecr.io/customerapiapp:${{ github.sha }}
+          dockerfilePath: CustomerService/CustomerAPI/Dockerfile
           
             
 

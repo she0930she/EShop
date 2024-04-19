@@ -68,3 +68,6 @@
 /Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI/obj/Debug/net6.0/CustomerAPI.genruntimeconfig.cache
 /Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI/obj/Debug/net6.0/ref/CustomerAPI.dll
 /Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI/obj/Debug/net6.0/CustomerAPI.sourcelink.json
+/Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI/bin/Debug/net6.0/JwtAuthenticationManager.dll
+/Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI/bin/Debug/net6.0/JwtAuthenticationManager.pdb

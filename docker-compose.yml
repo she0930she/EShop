@@ -6,3 +6,19 @@
       dockerfile: CustomerService/CustomerAPI/Dockerfile
     ports:
       - 1550:80
+
+  authenticationapi:
+    image: authenticationapi
+    build:
+      context: .
+      dockerfile: AuthenticationAPI/Dockerfile
+    ports:
+      - 1555:80
+  
+  orderapi:
+    image: orderapi
+    build:
+      context: .
+      dockerfile: OrderService/OrderAPI/Dockerfile
+    ports:
+      - 1551:80

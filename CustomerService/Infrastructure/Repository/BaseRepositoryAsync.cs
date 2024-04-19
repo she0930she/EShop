@@ -15,6 +15,8 @@ public class BaseRepositoryAsync<T>: IRepositoryAsync<T> where T : class
     }
 
 
+
+
     public Task<int> InsertAsync(T entity)
     {
         _customerDbContext.Set<T>().AddAsync(entity);
@@ -45,8 +47,19 @@ public class BaseRepositoryAsync<T>: IRepositoryAsync<T> where T : class
         return res;
     }
 
+
+
     public async Task<IEnumerable<T>> Filter(Expression<Func<T, bool>> filter)
     {
         return await _customerDbContext.Set<T>().Where(filter).ToListAsync();
     }
+
+    public async Task<T> FilterByModel(Expression<Func<T, bool>> filter)
+    {
+
+        return await _customerDbContext.Set<T>().Where(filter).FirstOrDefaultAsync();
+    }
+    
+
+    
 }

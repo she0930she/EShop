@@ -11,4 +11,5 @@ public class CustomerDbContext: DbContext
     }
     // set table name
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<User> Users { get; set; }
 }

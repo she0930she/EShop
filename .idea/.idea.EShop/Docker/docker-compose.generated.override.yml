@@ -1,5 +1,24 @@
 # This is a generated file. Not intended for manual editing.
 services:
+  authenticationapi:
+    build:
+      context: "/Users/amandatao/RiderProjects/WebProgramming/EShop"
+      dockerfile: "AuthenticationAPI/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/AuthenticationAPI.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "authenticationapi:dev"
+    ports: []
+    volumes:
+    - "/Users/amandatao/.nuget/packages:/root/.nuget/packages"
+    - "/Users/amandatao/RiderProjects/WebProgramming/EShop/AuthenticationAPI:/app:rw"
+    - "/Users/amandatao/RiderProjects/WebProgramming/EShop:/src:rw"
+    working_dir: "/app"
   customerapi:
     build:
       context: "/Users/amandatao/RiderProjects/WebProgramming/EShop"
@@ -17,5 +36,24 @@ services:
     volumes:
     - "/Users/amandatao/.nuget/packages:/root/.nuget/packages"
     - "/Users/amandatao/RiderProjects/WebProgramming/EShop/CustomerService/CustomerAPI:/app:rw"
+    - "/Users/amandatao/RiderProjects/WebProgramming/EShop:/src:rw"
+    working_dir: "/app"
+  orderapi:
+    build:
+      context: "/Users/amandatao/RiderProjects/WebProgramming/EShop"
+      dockerfile: "OrderService/OrderAPI/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/OrderAPI.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "orderapi:dev"
+    ports: []
+    volumes:
+    - "/Users/amandatao/.nuget/packages:/root/.nuget/packages"
+    - "/Users/amandatao/RiderProjects/WebProgramming/EShop/OrderService/OrderAPI:/app:rw"
     - "/Users/amandatao/RiderProjects/WebProgramming/EShop:/src:rw"
     working_dir: "/app"
